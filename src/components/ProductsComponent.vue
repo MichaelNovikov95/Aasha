@@ -1,42 +1,46 @@
 <template>
-  <section>
-    <div class="text-center space-y-10 justify-center px-6 py-10">
-      <h4 class="text-h4">{{ title }}</h4>
-      <div v-if="this.title === 'Prints'">
-        <ProductCardComponent v-for="card in printsCards" :key="card.id" :price="card.price" />
-      </div>
-      <div v-else>
-        <ProductCardComponent
-          v-for="card in stickersAndPinsCards"
-          :key="card.id"
-          :price="card.price"
-        />
-      </div>
+  <section class="px-6 pt-6 pb-14">
+    <DropDownComponent />
+    <div class="container text-center">
+      <ProductCardComponent
+        v-for="card in cards"
+        :key="card.id"
+        :id="card.id"
+        :price="card.price"
+        :category="card.category"
+        :name="card.name"
+        :image_src="card.image_src"
+      />
     </div>
   </section>
 </template>
 
 <script>
 import ProductCardComponent from '@/components/ProductCardComponent.vue'
+import DropDownComponent from '@/components/DropDownComponent.vue'
 export default {
   components: {
-    ProductCardComponent
+    ProductCardComponent,
+    DropDownComponent
   },
   props: ['title'],
   data() {
     return {
-      cards: [
-        { id: 1, category: 'prints', sub_category: 'large', price: 15 },
-        { id: 2, category: 'prints', sub_category: 'small', price: 11 },
-        { id: 3, category: 'pins', price: 8 },
-        { id: 4, category: 'pins', price: 8 },
-        { id: 5, category: 'stickers', price: 4 },
-        { id: 6, category: 'prints', sub_category: 'small', price: 11 },
-        { id: 7, category: 'prints', sub_category: 'small', price: 11 },
-        { id: 8, category: 'stickers', price: 4 },
-        { id: 9, category: 'books', price: 45 },
-        { id: 10, category: 'prints', sub_category: 'large', price: 15 }
-      ]
+      cards: null
+    }
+  },
+  mounted() {
+    this.fetchCards()
+  },
+  methods: {
+    async fetchCards() {
+      try {
+        const data = await fetch('http://localhost:3002/shop')
+        const fetchedCards = await data.json()
+        this.cards = fetchedCards
+      } catch (error) {
+        console.log(error.message)
+      }
     }
   },
   computed: {
@@ -49,3 +53,16 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 24px;
+}
+.filter_container {
+  display: flex;
+  flex-direction: row-reverse;
+}
+</style>

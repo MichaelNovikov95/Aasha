@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="px-6 py-10 space-y-4">
+    <div class=" px-6 py-10 space-y-4 ">
       <h3 class="text-h3 text-center">Mailing list</h3>
       <p class="text-subtitle1">
         Sign up to the mailing list for the latest updates and get special offers with
@@ -18,3 +18,4 @@
     </div>
   </section>
 </template>
+

@@ -1,18 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
-
-import Paintings from '@/components/DropDown_folders/Browse_folder/Paintings.vue'
-import Shop from '@/components/DropDown_folders/Browse_folder/Shop.vue'
-import Sketches from '@/components/DropDown_folders/Browse_folder/Sketches.vue'
-import Comissions from '@/components/DropDown_folders/Category_folder/Comissions.vue'
-import DigitalMerch from '@/components/DropDown_folders/Category_folder/DigitalMerch.vue'
-import PhysicalMerch from '@/components/DropDown_folders/Category_folder/PhysicalMerch.vue'
-import About from '@/components/DropDown_folders/Info_folder/About.vue'
-import Contact from '@/components/DropDown_folders/Info_folder/About.vue'
-
-import BrowseComponent from '@/components/DropDown_folders/BrowseComponent.vue'
-import CategoryComponent from '@/components/DropDown_folders/BrowseComponent.vue'
-import InfoComponent from '@/components/DropDown_folders/BrowseComponent.vue'
+import AboutView from '@/views/AboutView.vue'
+import ShopView from '@/views/ShopView.vue'
+import ProductView from '@/views/ProductView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -23,59 +13,54 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/browse',
-      name: 'browse',
-      component: BrowseComponent
-    },
-    {
-      path: '/browse/shop',
+      path: '/shop',
       name: 'shop',
-      component: Shop
+      component: ShopView
     },
     {
-      path: '/browse/shop/paintings',
-      name: 'paintings',
-      component: Paintings
+      path: '/shop/pins',
+      name: 'pins',
+      component: ShopView
     },
     {
-      path: '/browse/shop/sketches',
-      name: 'sketches',
-      component: Sketches
+      path: '/shop/pins/:id',
+      name: 'pin',
+      component: ProductView
     },
     {
-      path: '/category',
-      name: 'category',
-      component: CategoryComponent
+      path: '/shop/prints',
+      name: 'prints',
+      component: ShopView
     },
     {
-      path: '/category/comissions',
-      name: 'comissions',
-      component: Comissions
+      path: '/shop/prints/:id',
+      name: 'print',
+      component: ProductView
     },
     {
-      path: '/category/digitalMerch',
-      name: 'digitalMerch',
-      component: DigitalMerch
+      path: '/shop/books',
+      name: 'books',
+      component: ShopView
     },
     {
-      path: '/category/physicalMerch',
-      name: 'physicalMerch',
-      component: PhysicalMerch
+      path: '/shop/books/:id',
+      name: 'book',
+      component: ProductView
     },
     {
-      path: '/info',
-      name: 'info',
-      component: InfoComponent
+      path: '/shop/stickers',
+      name: 'stickers',
+      component: ShopView
     },
     {
-      path: '/info/about',
+      path: '/shop/stickers/:id',
+      name: 'sticker',
+      component: ProductView
+    },
+    {
+      path: '/about',
       name: 'about',
-      component: About
-    },
-    {
-      path: '/info/contact',
-      name: 'contact',
-      component: Contact
+      component: AboutView
     }
   ]
 })
