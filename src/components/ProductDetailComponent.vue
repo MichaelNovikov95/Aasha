@@ -1,21 +1,53 @@
 <template>
-  <section>
-    <div>
-      <span @click="goHome">Home</span> - <span @click="goBack">Catalogue</span> -
+  <section class="py-10 px-6">
+    <div class="flex items-center text-body1 space-x-4">
+      <span @click="goHome">Home</span>
+      <img src="../assets/svg/line.svg" alt="line" />
+      <span @click="goBack">Catalogue</span>
+      <img src="../assets/svg/line.svg" alt="line" />
       <span>{{ this.card?.name }}</span>
     </div>
     <div>
       <img :src="this.card?.image_src" :alt="this.card?.name" loading="lazy" />
-      <div v-if="this.card?.additional_image"></div>
+      <div v-if="this.card?.more_images" class="flex justify-center space-x-5">
+        <ul v-for="image in this.card?.more_images" :key="image.id" class="w-24 h-20">
+          <img :src="image" alt="" class="w-full" loading="lazy" />
+        </ul>
+      </div>
+    </div>
+    <div class="space-y-6 mt-10">
+      <h4 class="text-h4">{{ this.card?.name }}</h4>
+      <h5 class="text-h5" v-if="this.card?.category !== 'prints'">${{ this.card?.price }}.00</h5>
+      <h5 v-else class="text-h5">
+        ${{ this.checkedSize === 'large' ? this.card?.price[0] : this.card?.price[1] }}.00
+      </h5>
+      <PrintSizeCheckbox
+        v-if="this.card?.category === 'prints'"
+        @checkedSize="(msg) => (checkedSize = msg)"
+      />
+      <button
+        @click="addToCart"
+        class="bg-resoultion-blue w-full rounded-lg flex items-center justify-center relative"
+      >
+        <p class="text-button text-white py-3">Add to cart</p>
+        <img src="../assets/svg/arrow.svg" alt="arrow" class="absolute right-4" />
+      </button>
     </div>
   </section>
 </template>
 
 <script>
+import PrintSizeCheckbox from './PrintSizeCheckbox.vue'
 export default {
+  components: {
+    PrintSizeCheckbox
+  },
   data() {
     return {
-      card: null
+      card: null,
+      cart: JSON.parse(localStorage.getItem('cart')) || [],
+      checkedSize: 'large',
+      price: 0
     }
   },
   mounted() {
@@ -27,6 +59,23 @@ export default {
     },
     goHome() {
       this.$router.go(-2)
+    },
+    choosenPrice() {
+      if (this.checkedSize === 'large') {
+        this.price = this.card.price[0]
+      } else {
+        this.price = this.card.price[1]
+      }
+    },
+    addToCart() {
+      this.choosenPrice()
+      const pushedCardIntoCart = {
+        image_src: this.card.image_src,
+        name: this.card.name,
+        price: this.price ?? this.card.price
+      }
+      this.cart.push(pushedCardIntoCart)
+      localStorage.setItem('cart', JSON.stringify(this.cart))
     },
     async fetchOneProduct() {
       try {
@@ -40,3 +89,5 @@ export default {
   }
 }
 </script>
+
+<style></style>

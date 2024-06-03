@@ -1,42 +1,37 @@
 <template>
-  <Transition name="slide-fade"
-    ><div
-      v-if="show"
-      class="flex fixed left-0 top-0 bottom-0 bg-white w-screen scroll-none overflow-y-hidden p-5 justify-between"
-    >
-      <DropDownComponent />
-      <div @click="$emit('close')"><img src="../assets/svg/x.svg" alt="Exit icon" /></div>
-    </div>
-  </Transition>
+  <div @click="showFilters = true" class="flex justify-end">
+    <img src="@/assets/svg/filters.svg" alt="Filters icon" />
+  </div>
+  <Teleport to="body">
+    <DropDownComponent
+      :show="showFilters"
+      @close="showFilters = false"
+      @choosenCategory="(msg) => (choosenCategory = msg)"
+    />
+  </Teleport>
 </template>
 
 <script>
 import DropDownComponent from './DropDownComponent.vue'
 export default {
-  components: { DropDownComponent },
-  props: {
-    show: Boolean
+  emits: ['choosenCategory'],
+  components: {
+    DropDownComponent
   },
   data() {
     return {
-      activeText: false
+      showFilters: false,
+      choosenCategory: ''
+    }
+  },
+  watch: {
+    choosenCategory(newChoosenCategory, oldChoosenCategory) {
+      if (newChoosenCategory !== oldChoosenCategory) {
+        this.$emit('choosenCategory', newChoosenCategory)
+      }
     }
   }
 }
 </script>
 
-<style>
-.slide-fade-enter-active {
-  transition: all 0.3s ease-out;
-}
-
-.slide-fade-leave-active {
-  transition: all 0.3s ease-out;
-}
-
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  transform: translateX(100px);
-  opacity: 0;
-}
-</style>
+<style></style>

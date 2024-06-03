@@ -3,7 +3,11 @@
 module.exports = {
   content: ['./src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      height: {
+        38: '150px'
+      }
+    },
     colors: {
       'cosmic-latte': '#F9F6E5',
       glaucous: '#7576B9',

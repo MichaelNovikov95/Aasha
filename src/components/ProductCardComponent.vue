@@ -1,20 +1,21 @@
 <template>
   <div class="card" @click="getElementId">
     <div class="price_card bg-glaucous rounded w-16">
-      <p class="text-subtitle2 text-cosmic-latte px-2.5 py-1">${{ price }}.00</p>
+      <p class="text-subtitle2 text-cosmic-latte px-2.5 py-1">${{ price[0] ?? price }}.00</p>
     </div>
     <div class="flex justify-center">
-      <img :src="image_src" alt="Product image" loading="lazy" class="image_card w-full" />
+      <img :src="image_src" alt="Product image" loading="lazy" class="image_card w-full h-40" />
     </div>
-    <div>
-      <p class="mt-4 text-subtitle1">{{ name }}</p>
+    <div class="mt-4">
+      <p class="text-subtitle1">{{ name }}</p>
+      <p class="mt-2 text-body1">{{ fandom }}</p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['name', 'price', 'id', 'image_src', 'category'],
+  props: ['name', 'price', 'id', 'image_src', 'category', 'fandom'],
   methods: {
     getElementId() {
       this.$router.push(`/shop/${this.category}/${this.id}`)

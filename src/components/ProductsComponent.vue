@@ -1,7 +1,19 @@
 <template>
   <section class="px-6 pt-6 pb-14">
-    <DropDownComponent />
-    <div class="container text-center">
+    <ModalComponent @choosenCategory="(msg) => (choosenCategory = msg)" />
+    <div class="container text-center" v-if="this.choosenCategory !== ''">
+      <ProductCardComponent
+        v-for="card in filteredCards"
+        :key="card.id"
+        :id="card.id"
+        :price="card.price"
+        :category="card.category"
+        :name="card.name"
+        :image_src="card.image_src"
+        :fandom="card.fandom"
+      />
+    </div>
+    <div class="container text-center" v-else>
       <ProductCardComponent
         v-for="card in cards"
         :key="card.id"
@@ -10,6 +22,7 @@
         :category="card.category"
         :name="card.name"
         :image_src="card.image_src"
+        :fandom="card.fandom"
       />
     </div>
   </section>
@@ -17,20 +30,25 @@
 
 <script>
 import ProductCardComponent from '@/components/ProductCardComponent.vue'
-import DropDownComponent from '@/components/DropDownComponent.vue'
+import ModalComponent from '@/components/ModalComponent.vue'
 export default {
   components: {
     ProductCardComponent,
-    DropDownComponent
+    ModalComponent
   },
   props: ['title'],
   data() {
     return {
-      cards: null
+      cards: null,
+      choosenCategory: ''
     }
   },
   mounted() {
-    this.fetchCards()
+    if (this.choosenCategory === '') {
+      return this.fetchCards()
+    } else {
+      this.filteredCards
+    }
   },
   methods: {
     async fetchCards() {
@@ -44,11 +62,8 @@ export default {
     }
   },
   computed: {
-    printsCards() {
-      return this.cards.filter((card) => card.category === 'prints')
-    },
-    stickersAndPinsCards() {
-      return this.cards.filter((card) => card.category === 'stickers' || card.category === 'pins')
+    filteredCards() {
+      return this.cards.filter((card) => card.category === this.choosenCategory)
     }
   }
 }

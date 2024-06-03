@@ -3,8 +3,12 @@
     <div class="flex p-6 justify-between">
       <span class="cursor-pointer"><img src="../assets/svg/Aasha.svg" alt="Logo" /></span>
       <div class="flex flex-wrap space-x-2 content-end">
-        <span class="cursor-pointer"><img src="../assets/svg/pers.svg" alt="Person icon" /></span>
-        <span class="cursor-pointer"><img src="../assets/svg/cart.svg" alt="Cart icon" /></span>
+        <RouterLink to="/login" class="cursor-pointer"
+          ><img src="../assets/svg/pers.svg" alt="Person icon"
+        /></RouterLink>
+        <RouterLink to="/shop/cart" class="cursor-pointer"
+          ><img src="../assets/svg/cart.svg" alt="Cart icon"
+        /></RouterLink>
       </div>
     </div>
   </header>
