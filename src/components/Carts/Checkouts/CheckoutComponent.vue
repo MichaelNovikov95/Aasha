@@ -1,9 +1,9 @@
 <template>
-  <section class="px-6 py-20 space-y-10">
+  <section class="space-y-10">
     <h4 class="text-h4">Checkout</h4>
     <div class="text-center justify-around flex">
       <p class="text-body1">Order summary</p>
-      <p>$33.00</p>
+      <p>${{ totalPriceCount }}.00</p>
     </div>
     <div>
       <form @submit.prevent="getFormValues" class="space-y-2 mt-4 text-subtitle1">
@@ -85,8 +85,10 @@
             required
           />
         </div>
-        <div class="text-center bg-resoultion-blue rounded-xl confirm_button">
-          <input class="text-white text-button py-3" type="submit" value="Next" />
+        <div class="text-center bg-resoultion-blue rounded-3xl confirm_button">
+          <button @click="this.nextCheckoutStep" type="submit" class="text-white text-button py-3">
+            Next
+          </button>
         </div>
       </form>
     </div>
@@ -95,6 +97,11 @@
 
 <script>
 export default {
+  props: {
+    productParsedForCart: Object,
+    totalPriceCount: Number,
+    nextCheckoutStep: Function
+  },
   data() {
     return {
       clientInfo: {
@@ -122,6 +129,7 @@ export default {
       this.clientInfo.city = elements.city.value
       this.clientInfo.state = elements.state.value
       this.clientInfo.postal_code = elements.postal_code.value
+      localStorage.setItem('personalInfo', JSON.stringify(this.clientInfo))
     }
   }
 }

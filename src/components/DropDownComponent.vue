@@ -13,7 +13,7 @@
           </div>
           <Transition>
             <div v-if="showOptions">
-              <div class="text-resoultion-blue w-full py-3 pl-4 border-y-2">
+              <div class="text-resoultion-blue w-full py-3 pl-4">
                 <input
                   type="radio"
                   id="prints"
@@ -48,8 +48,8 @@
                 <label for="books" class="text-body1 ml-2">Books</label>
               </div>
               <div class="text-resoultion-blue w-full py-3 pl-4">
-                <input type="radio" id="books" name="print" value="" v-model="choosenCategory" />
-                <label for="books" class="text-body1 ml-2">Reset</label>
+                <input type="radio" id="reset" name="print" value="" v-model="choosenCategory" />
+                <label for="reset" class="text-body1 ml-2">Reset</label>
               </div>
             </div>
           </Transition>

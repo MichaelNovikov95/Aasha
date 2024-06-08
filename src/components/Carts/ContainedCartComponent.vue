@@ -18,12 +18,12 @@
         <h6 class="text-h6">${{ totalPriceCount }}.00</h6>
       </div>
 
-      <RouterLink
-        to="/shop/cart/checkout"
+      <button
+        @click="this.nextCheckoutStep"
         class="text-button text-white w-full bg-resoultion-blue py-3 rounded-lg"
       >
         Checkout
-      </RouterLink>
+      </button>
       <RouterLink to="/shop" class="text-body1">Continue shopping</RouterLink>
     </div>
   </div>
@@ -37,31 +37,14 @@ export default {
     ProductCartComponent
   },
   props: {
-    cart: Object
+    cart: Object,
+    productParsedForCart: Object,
+    totalPriceCount: Number,
+    nextCheckoutStep: Function
   },
   data() {
     return {
       productToRemove: ''
-    }
-  },
-  computed: {
-    productParsedForCart() {
-      const result = Object.values(
-        this.cart.reduce((r, { image_src, name, price }) => {
-          r[name] ??= { image_src, name, count: 0, totalPrice: 0 }
-          r[name].count++
-          r[name].totalPrice += price
-          return r
-        }, {})
-      )
-      return result
-    },
-    totalPriceCount() {
-      let total = 0
-      this.productParsedForCart.forEach((product) => {
-        total += product.totalPrice
-      })
-      return total
     }
   },
   watch: {

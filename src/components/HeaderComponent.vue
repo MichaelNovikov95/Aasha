@@ -1,9 +1,12 @@
 <template>
   <header class="border-b-2 border-b-lavender-web">
     <div class="flex p-6 justify-between">
-      <span class="cursor-pointer"><img src="../assets/svg/Aasha.svg" alt="Logo" /></span>
+      <RouterLink to="/" class="cursor-pointer"
+        ><img src="../assets/svg/Aasha.svg" alt="Logo"
+      /></RouterLink>
       <div class="flex flex-wrap space-x-2 content-end">
-        <RouterLink to="/login" class="cursor-pointer"
+        <button class="text-button" v-if="store.token" @click="store.logoutAction">Logout</button>
+        <RouterLink to="/login" class="cursor-pointer" v-else
           ><img src="../assets/svg/pers.svg" alt="Person icon"
         /></RouterLink>
         <RouterLink to="/shop/cart" class="cursor-pointer"
@@ -14,17 +17,7 @@
   </header>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      active: false
-    }
-  },
-  methods: {
-    toggle() {
-      this.active = !this.active
-    }
-  }
-}
+<script setup>
+import { useAuthStore } from '../stores/authStore.ts'
+const store = useAuthStore()
 </script>

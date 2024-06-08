@@ -9,10 +9,12 @@
           personal collection.
         </p>
         <div class="border-2 rounded-lg border-slate-gray">
-          <span class="flex justify-center py-3 space-x-2">
-            <RouterLink class="text-button font-medium" to="/shop">Browse all</RouterLink>
-            <img src="@/assets/svg/arrow.svg" alt=""
-          /></span>
+          <RouterLink class="text-button font-medium" to="/shop">
+            <span class="flex justify-center py-3 space-x-2">
+              Browse all
+              <img src="@/assets/svg/arrow.svg" alt=""
+            /></span>
+          </RouterLink>
         </div>
       </div>
     </div>

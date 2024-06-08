@@ -1,11 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useAuthStore } from '@/stores/authStore'
+
 import HomeView from '@/views/HomeView.vue'
 import AboutView from '@/views/AboutView.vue'
 import ShopView from '@/views/ShopView.vue'
 import ProductView from '@/views/ProductView.vue'
 import CartView from '@/views/CartView.vue'
-import CheckoutView from '@/views/CheckoutView.vue'
-import PaymentView from '@/views/PaymentView.vue'
+import LoginView from '@/views/LoginView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -71,16 +72,22 @@ const router = createRouter({
       component: CartView
     },
     {
-      path: '/shop/cart/checkout',
-      name: 'checkout',
-      component: CheckoutView
-    },
-    {
-      path: '/shop/cart/checkout/payment',
-      name: 'payment',
-      component: PaymentView
+      path: '/login',
+      name: 'login',
+      component: LoginView
     }
   ]
+})
+
+router.beforeEach(async (to) => {
+  const publicPages = ['/shop/cart']
+  const authRequired = publicPages.includes(to.path)
+  const auth = useAuthStore()
+
+  if (authRequired && !auth.token) {
+    auth.returnUrl = to.fullPath
+    return '/login'
+  }
 })
 
 export default router
