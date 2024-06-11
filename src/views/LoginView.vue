@@ -1,5 +1,5 @@
 <template>
-  <section class="px-6 pt-20 pb-14 text-center">
+  <section class="px-6 pt-20 pb-14 lg:pb-20 text-center lg:max-w-[480px] lg:ml-auto lg:mr-auto">
     <LoginComponent v-if="currentPage === 1" :loginToggle="this.loginToggle" />
     <RegistrationComponent v-else />
   </section>

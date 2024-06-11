@@ -1,7 +1,7 @@
 <template>
-  <section class="space-y-10">
-    <h4 class="text-h4">Checkout</h4>
-    <div class="text-center justify-around flex">
+  <section class="space-y-10 lg:w-[640px]">
+    <h4 class="text-h4 text-">Checkout</h4>
+    <div class="lg:hidden text-center justify-around flex">
       <p class="text-body1">Order summary</p>
       <p>${{ totalPriceCount }}.00</p>
     </div>
@@ -27,23 +27,25 @@
             required
           />
         </div>
-        <div class="flex flex-col">
-          <label for="first_name" class="mb-2">First name</label>
-          <input
-            class="border-2 h-12 rounded-lg border-slate-gray"
-            type="text"
-            name="first_name"
-            required
-          />
-        </div>
-        <div class="flex flex-col">
-          <label for="last_name" class="mb-2">Last name</label>
-          <input
-            class="border-2 h-12 rounded-lg border-slate-gray"
-            type="text"
-            name="last_name"
-            required
-          />
+        <div class="lg:flex lg:space-x-8">
+          <div class="flex lg:flex-1 flex-col">
+            <label for="first_name" class="mb-2">First name</label>
+            <input
+              class="border-2 h-12 rounded-lg border-slate-gray"
+              type="text"
+              name="first_name"
+              required
+            />
+          </div>
+          <div class="flex lg:flex-1 flex-col">
+            <label for="last_name" class="mb-2">Last name</label>
+            <input
+              class="border-2 h-12 rounded-lg border-slate-gray"
+              type="text"
+              name="last_name"
+              required
+            />
+          </div>
         </div>
         <div class="flex flex-col">
           <label for="address" class="mb-2">Address</label>
@@ -58,37 +60,37 @@
           <label for="appartment" class="mb-2">Apartment number, suite, etc (optional)</label>
           <input class="border-2 h-12 rounded-lg border-slate-gray" type="text" name="appartment" />
         </div>
-        <div class="flex flex-col">
-          <label for="city" class="mb-2">City</label>
-          <input
-            class="border-2 h-12 rounded-lg border-slate-gray"
-            type="text"
-            name="city"
-            required
-          />
+        <div class="lg:flex lg:space-x-8">
+          <div class="flex lg:flex-1 flex-col">
+            <label for="city" class="mb-2">City</label>
+            <input
+              class="border-2 h-12 rounded-lg border-slate-gray"
+              type="text"
+              name="city"
+              required
+            />
+          </div>
+          <div class="flex lg:flex-1 flex-col">
+            <label for="state" class="mb-2">State / Province</label>
+            <input
+              class="border-2 h-12 rounded-lg border-slate-gray"
+              type="text"
+              name="state"
+              required
+            />
+          </div>
+          <div class="flex lg:flex-1 flex-col">
+            <label for="postal_code" class="mb-2">Postal code</label>
+            <input
+              class="border-2 h-12 rounded-lg border-slate-gray"
+              type="text"
+              name="postal_code"
+              required
+            />
+          </div>
         </div>
-        <div class="flex flex-col">
-          <label for="state" class="mb-2">State / Province</label>
-          <input
-            class="border-2 h-12 rounded-lg border-slate-gray"
-            type="text"
-            name="state"
-            required
-          />
-        </div>
-        <div class="flex flex-col">
-          <label for="postal_code" class="mb-2">Postal code</label>
-          <input
-            class="border-2 h-12 rounded-lg border-slate-gray"
-            type="text"
-            name="postal_code"
-            required
-          />
-        </div>
-        <div class="text-center bg-resoultion-blue rounded-3xl confirm_button">
-          <button @click="this.nextCheckoutStep" type="submit" class="text-white text-button py-3">
-            Next
-          </button>
+        <div type="submit" class="text-center bg-resoultion-blue rounded-3xl confirm_button">
+          <button @click="this.moveForward" class="text-white text-button py-3">Next</button>
         </div>
       </form>
     </div>
@@ -118,8 +120,15 @@ export default {
     }
   },
   methods: {
+    moveForward() {
+      setTimeout(() => {
+        this.$emit('clientInfo', this.clientInfo)
+        this.nextCheckoutStep()
+      }, 0)
+    },
     getFormValues(submitEvent) {
       const { elements } = submitEvent.target
+
       this.clientInfo.email = elements.email.value
       this.clientInfo.country = elements.country.value
       this.clientInfo.first_name = elements.first_name.value
@@ -129,7 +138,6 @@ export default {
       this.clientInfo.city = elements.city.value
       this.clientInfo.state = elements.state.value
       this.clientInfo.postal_code = elements.postal_code.value
-      localStorage.setItem('personalInfo', JSON.stringify(this.clientInfo))
     }
   }
 }

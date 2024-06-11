@@ -1,6 +1,6 @@
 <template>
   <div @click="showFilters = true" class="flex justify-end">
-    <img src="@/assets/svg/filters.svg" alt="Filters icon" />
+    <img class="lg:hidden" src="@/assets/svg/filters.svg" alt="Filters icon" />
   </div>
   <Teleport to="body">
     <DropDownComponent
@@ -33,5 +33,3 @@ export default {
   }
 }
 </script>
-
-<style></style>

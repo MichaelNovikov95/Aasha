@@ -1,12 +1,20 @@
 <template>
-  <div class="card" @click="getElementId">
-    <div class="price_card bg-glaucous rounded w-16">
+  <div
+    class="relative w-[156px] lg:min-w-[250px] lg:max-w-[304px] h-[316px] lg:h-[392px] border shadow-[0px_4px_4px_rgba(25,33,61,0.25)] mb-10 lg:mb-14 p-2 rounded-lg border-[slategray]"
+    @click="getElementId"
+  >
+    <div class="price_card bg-glaucous rounded w-16 lg:text-center">
       <p class="text-subtitle2 text-cosmic-latte px-2.5 py-1">${{ price[0] ?? price }}.00</p>
     </div>
     <div class="flex justify-center">
-      <img :src="image_src" alt="Product image" loading="lazy" class="image_card w-full h-40" />
+      <img
+        :src="image_src"
+        alt="Product image"
+        loading="lazy"
+        class="image_card w-full h-40 lg:h-72"
+      />
     </div>
-    <div class="mt-4">
+    <div class="mt-4 lg:ml-6">
       <p class="text-subtitle1">{{ name }}</p>
       <p class="mt-2 text-body1">{{ fandom }}</p>
     </div>
@@ -25,17 +33,12 @@ export default {
 </script>
 
 <style scoped>
-.card {
+.desktop-card {
   position: relative;
-  width: 156px;
-  height: 316px;
-  border-radius: 8px;
-  border-color: slategray;
-  border-width: 1px;
-  margin-bottom: 40px;
-  padding: 8px;
-  box-shadow: 0px 4px 4px rgba(25, 33, 61, 0.25);
+  width: 304px;
+  height: 309px;
 }
+
 .card:last-child {
   margin-bottom: 0px;
 }

@@ -1,5 +1,5 @@
 <template>
-  <section class="px-6 empty-container">
+  <section class="px-6 empty-container lg:max-w-[1088px] lg:mr-auto lg:ml-auto">
     <PreCheckoutComponent
       v-if="checkoutStep === 1"
       :cart="cart"
@@ -27,7 +27,7 @@
 </template>
 
 <script setup>
-import { ref, watchEffect, defineEmits, computed } from 'vue'
+import { ref, watchEffect, computed } from 'vue'
 
 import PreCheckoutComponent from '../components/Carts/Checkouts/PreCheckoutComponent.vue'
 import CheckoutComponent from '../components/Carts/Checkouts/CheckoutComponent.vue'
@@ -41,6 +41,7 @@ const emit = defineEmits({
 
 const cart = ref(JSON.parse(localStorage.getItem('cart')) || [])
 const checkoutStep = ref(1)
+const clietnInfo = {}
 
 function removeProduct(name) {
   const renewedCart = JSON.parse(localStorage.getItem('cart')).filter(

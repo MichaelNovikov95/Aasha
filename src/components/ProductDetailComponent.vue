@@ -1,5 +1,5 @@
 <template>
-  <section class="py-10 px-6">
+  <section class="py-10 lg:py-16 px-6 lg:px-44">
     <div class="flex items-center text-body1 space-x-4">
       <span @click="goHome">Home</span>
       <img src="../assets/svg/line.svg" alt="line" />
@@ -7,31 +7,38 @@
       <img src="../assets/svg/line.svg" alt="line" />
       <span>{{ this.card?.name }}</span>
     </div>
-    <div>
-      <img :src="this.card?.image_src" :alt="this.card?.name" loading="lazy" />
-      <div v-if="this.card?.more_images" class="flex justify-center space-x-5">
-        <ul v-for="image in this.card?.more_images" :key="image.id" class="w-24 h-20">
-          <img :src="image" alt="" class="w-full" loading="lazy" />
-        </ul>
+    <div class="lg:flex lg:justify-between">
+      <div>
+        <img
+          :src="this.card?.image_src"
+          :alt="this.card?.name"
+          loading="lazy"
+          class="lg:h-[528px] w-[528px]"
+        />
+        <div v-if="this.card?.more_images" class="flex justify-center lg:justify-normal space-x-5">
+          <ul v-for="image in this.card?.more_images" :key="image.id" class="w-24 h-20">
+            <img :src="image" alt="" class="w-full" loading="lazy" />
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="space-y-6 mt-10">
-      <h4 class="text-h4">{{ this.card?.name }}</h4>
-      <h5 class="text-h5" v-if="this.card?.category !== 'prints'">${{ this.card?.price }}.00</h5>
-      <h5 v-else class="text-h5">
-        ${{ this.checkedSize === 'large' ? this.card?.price[0] : this.card?.price[1] }}.00
-      </h5>
-      <PrintSizeCheckbox
-        v-if="this.card?.category === 'prints'"
-        @checkedSize="(msg) => (checkedSize = msg)"
-      />
-      <button
-        @click="addToCart"
-        class="bg-resoultion-blue w-full rounded-lg flex items-center justify-center relative"
-      >
-        <p class="text-button text-white py-3">Add to cart</p>
-        <img src="../assets/svg/arrow.svg" alt="arrow" class="absolute right-4" />
-      </button>
+      <div class="space-y-6 mt-10">
+        <h4 class="text-h4">{{ this.card?.name }}</h4>
+        <h5 class="text-h5" v-if="this.card?.category !== 'prints'">${{ this.card?.price }}.00</h5>
+        <h5 v-else class="text-h5">
+          ${{ this.checkedSize === 'large' ? this.card?.price[0] : this.card?.price[1] }}.00
+        </h5>
+        <PrintSizeCheckbox
+          v-if="this.card?.category === 'prints'"
+          @checkedSize="(msg) => (checkedSize = msg)"
+        />
+        <button
+          @click="addToCart"
+          class="bg-resoultion-blue w-full rounded-lg flex items-center justify-center relative lg:w-[448px]"
+        >
+          <p class="text-button text-white py-3">Add to cart</p>
+          <img src="../assets/svg/arrow.svg" alt="arrow" class="absolute right-4" />
+        </button>
+      </div>
     </div>
   </section>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <header class="border-b-2 border-b-lavender-web">
-    <div class="flex p-6 justify-between">
+    <div class="flex px-6 lg:px-16 py-6 justify-between">
       <RouterLink to="/" class="cursor-pointer"
         ><img src="../assets/svg/Aasha.svg" alt="Logo"
       /></RouterLink>
