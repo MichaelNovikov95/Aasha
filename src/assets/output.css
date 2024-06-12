@@ -689,6 +689,10 @@ html {
   margin-top: 2rem;
 }
 
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
+
 .flex {
   display: flex;
 }
@@ -749,16 +753,16 @@ html {
   width: 156px;
 }
 
+.w-\[528px\] {
+  width: 528px;
+}
+
 .w-full {
   width: 100%;
 }
 
 .w-screen {
   width: 100vw;
-}
-
-.w-\[528px\] {
-  width: 528px;
 }
 
 .min-w-52 {
@@ -870,12 +874,6 @@ html {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
-}
-
-.space-y-0 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(0px * var(--tw-space-y-reverse));
 }
 
 .divide-y > :not([hidden]) ~ :not([hidden]) {
@@ -1008,16 +1006,16 @@ html {
   padding: 0.5rem;
 }
 
+.p-4 {
+  padding: 1rem;
+}
+
 .p-5 {
   padding: 1.25rem;
 }
 
 .p-6 {
   padding: 1.5rem;
-}
-
-.p-4 {
-  padding: 1rem;
 }
 
 .px-2 {
@@ -1055,6 +1053,11 @@ html {
   padding-bottom: 2.5rem;
 }
 
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
 .py-20 {
   padding-top: 5rem;
   padding-bottom: 5rem;
@@ -1068,11 +1071,6 @@ html {
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-}
-
-.py-2 {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
 }
 
 .pb-14 {
@@ -1212,12 +1210,20 @@ html {
     margin-bottom: 3.5rem;
   }
 
+  .lg\:mb-\[384px\] {
+    margin-bottom: 384px;
+  }
+
+  .lg\:ml-4 {
+    margin-left: 1rem;
+  }
+
   .lg\:ml-6 {
     margin-left: 1.5rem;
   }
 
-  .lg\:mt-20 {
-    margin-top: 5rem;
+  .lg\:ml-8 {
+    margin-left: 2rem;
   }
 
   .lg\:ml-auto {
@@ -1228,10 +1234,6 @@ html {
     margin-right: auto;
   }
 
-  .lg\:ml-8 {
-    margin-left: 2rem;
-  }
-
   .lg\:mt-0 {
     margin-top: 0px;
   }
@@ -1240,12 +1242,8 @@ html {
     margin-top: 4rem;
   }
 
-  .lg\:ml-4 {
-    margin-left: 1rem;
-  }
-
-  .lg\:mb-\[384px\] {
-    margin-bottom: 384px;
+  .lg\:mt-20 {
+    margin-top: 5rem;
   }
 
   .lg\:block {
@@ -1264,6 +1262,14 @@ html {
     height: 18rem;
   }
 
+  .lg\:h-\[152px\] {
+    height: 152px;
+  }
+
+  .lg\:h-\[195px\] {
+    height: 195px;
+  }
+
   .lg\:h-\[392px\] {
     height: 392px;
   }
@@ -1272,68 +1278,48 @@ html {
     height: 528px;
   }
 
-  .lg\:h-\[195px\] {
-    height: 195px;
-  }
-
-  .lg\:h-\[152px\] {
-    height: 152px;
-  }
-
-  .lg\:h-56 {
-    height: 14rem;
-  }
-
   .lg\:h-\[56px\] {
     height: 56px;
-  }
-
-  .lg\:w-64 {
-    width: 16rem;
-  }
-
-  .lg\:w-96 {
-    width: 24rem;
-  }
-
-  .lg\:w-72 {
-    width: 18rem;
-  }
-
-  .lg\:w-\[448px\] {
-    width: 448px;
-  }
-
-  .lg\:w-\[304px\] {
-    width: 304px;
-  }
-
-  .lg\:w-\[80px\] {
-    width: 80px;
   }
 
   .lg\:w-20 {
     width: 5rem;
   }
 
-  .lg\:w-\[1088px\] {
-    width: 1088px;
+  .lg\:w-64 {
+    width: 16rem;
   }
 
-  .lg\:w-\[640px\] {
-    width: 640px;
+  .lg\:w-72 {
+    width: 18rem;
+  }
+
+  .lg\:w-96 {
+    width: 24rem;
   }
 
   .lg\:w-\[136px\] {
     width: 136px;
   }
 
+  .lg\:w-\[304px\] {
+    width: 304px;
+  }
+
   .lg\:w-\[384px\] {
     width: 384px;
   }
 
-  .lg\:min-w-48 {
-    min-width: 12rem;
+  .lg\:w-\[448px\] {
+    width: 448px;
+  }
+
+  .lg\:w-\[640px\] {
+    width: 640px;
+  }
+
+  .lg\:w-\[80px\] {
+    width: 80px;
   }
 
   .lg\:min-w-\[250px\] {
@@ -1348,44 +1334,28 @@ html {
     max-width: 42rem;
   }
 
-  .lg\:max-w-72 {
-    max-width: 18rem;
+  .lg\:max-w-\[1088px\] {
+    max-width: 1088px;
   }
 
   .lg\:max-w-\[304px\] {
     max-width: 304px;
   }
 
-  .lg\:max-w-\[964px\] {
-    max-width: 964px;
-  }
-
   .lg\:max-w-\[480px\] {
     max-width: 480px;
-  }
-
-  .lg\:max-w-\[1088px\] {
-    max-width: 1088px;
-  }
-
-  .lg\:max-w-xl {
-    max-width: 36rem;
   }
 
   .lg\:max-w-\[640px\] {
     max-width: 640px;
   }
 
+  .lg\:max-w-xl {
+    max-width: 36rem;
+  }
+
   .lg\:flex-1 {
     flex: 1 1 0%;
-  }
-
-  .lg\:flex-initial {
-    flex: 0 1 auto;
-  }
-
-  .lg\:flex-none {
-    flex: none;
   }
 
   .lg\:flex-col {
@@ -1408,22 +1378,16 @@ html {
     justify-content: space-between;
   }
 
-  .lg\:space-y-0 > :not([hidden]) ~ :not([hidden]) {
-    --tw-space-y-reverse: 0;
-    margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
-    margin-bottom: calc(0px * var(--tw-space-y-reverse));
-  }
-
   .lg\:space-x-0 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-x-reverse: 0;
     margin-right: calc(0px * var(--tw-space-x-reverse));
     margin-left: calc(0px * calc(1 - var(--tw-space-x-reverse)));
   }
 
-  .lg\:space-x-8 > :not([hidden]) ~ :not([hidden]) {
+  .lg\:space-x-16 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-x-reverse: 0;
-    margin-right: calc(2rem * var(--tw-space-x-reverse));
-    margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
+    margin-right: calc(4rem * var(--tw-space-x-reverse));
+    margin-left: calc(4rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
   .lg\:space-x-5 > :not([hidden]) ~ :not([hidden]) {
@@ -1432,10 +1396,16 @@ html {
     margin-left: calc(1.25rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
-  .lg\:space-x-16 > :not([hidden]) ~ :not([hidden]) {
+  .lg\:space-x-8 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-x-reverse: 0;
-    margin-right: calc(4rem * var(--tw-space-x-reverse));
-    margin-left: calc(4rem * calc(1 - var(--tw-space-x-reverse)));
+    margin-right: calc(2rem * var(--tw-space-x-reverse));
+    margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .lg\:space-y-0 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0px * var(--tw-space-y-reverse));
   }
 
   .lg\:rounded-lg {
@@ -1464,24 +1434,14 @@ html {
     padding-right: 11rem;
   }
 
-  .lg\:py-12 {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
-
-  .lg\:py-14 {
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
+  .lg\:px-9 {
+    padding-left: 2.25rem;
+    padding-right: 2.25rem;
   }
 
   .lg\:py-16 {
     padding-top: 4rem;
     padding-bottom: 4rem;
-  }
-
-  .lg\:px-9 {
-    padding-left: 2.25rem;
-    padding-right: 2.25rem;
   }
 
   .lg\:py-4 {
@@ -1497,15 +1457,15 @@ html {
     padding-bottom: 384px;
   }
 
+  .lg\:pb-44 {
+    padding-bottom: 11rem;
+  }
+
   .lg\:text-left {
     text-align: left;
   }
 
   .lg\:text-center {
     text-align: center;
-  }
-
-  .lg\:text-body2 {
-    font-size: 14px;
   }
 }

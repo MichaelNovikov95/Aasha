@@ -1,10 +1,11 @@
 <template>
-  <section class="px-6 lg:px-16 pt-6 pb-14 mt-6 lg:mt-20">
+  <ServerError v-if="error !== ''" />
+  <section v-if="error === ''" class="px-6 lg:px-16 pt-6 pb-14 mt-6 lg:mt-20">
     <ModalComponent @choosenCategory="(msg) => (choosenCategory = msg)" />
     <div>
       <LoaderComponent v-if="isLoading" />
     </div>
-    <container class="flex" v-if="!isLoading">
+    <div class="flex" v-if="!isLoading">
       <aside class="hidden lg:flex mr-8 lg:w-72">
         <ProductsFilterComponent @choosenCategory="(msg) => (choosenCategory = msg)" />
       </aside>
@@ -32,7 +33,7 @@
           :fandom="card.fandom"
         />
       </div>
-    </container>
+    </div>
     <div class="flex space-x-2 justify-center">
       <button
         class="border-2 rounded-lg py-2 px-4 text-button"
@@ -56,13 +57,15 @@
 import ProductCardComponent from '@/components/ProductCardComponent.vue'
 import ModalComponent from '@/components/ProductFilter&ModalFilter/ModalComponent.vue'
 import ProductsFilterComponent from '@/components/ProductFilter&ModalFilter/ProductsFilterComponent.vue'
-import LoaderComponent from '../components/LoaderComponent.vue'
+import LoaderComponent from '@/components/LoaderComponent.vue'
+import ServerError from '@/views/ServerError.vue'
 export default {
   components: {
     ProductCardComponent,
     ModalComponent,
     ProductsFilterComponent,
-    LoaderComponent
+    LoaderComponent,
+    ServerError
   },
   props: ['title'],
   data() {
@@ -70,6 +73,7 @@ export default {
       cards: null,
       choosenCategory: '',
       page: 1,
+      error: '',
       hasNextPage: true,
       isLoading: false
     }
@@ -89,7 +93,7 @@ export default {
         const fetchedCards = await data.json()
         this.cards = fetchedCards
       } catch (error) {
-        console.log(error.message)
+        this.error = error.message
       } finally {
         this.isLoading = false
       }
@@ -97,8 +101,8 @@ export default {
   },
   computed: {
     filteredCards() {
-      const start = (this.page - 1) * 9
-      const end = this.page * 9
+      const start = (this.page - 1) * 8
+      const end = this.page * 8
 
       this.hasNextPage =
         this.cards?.filter((card) => card.category === this.choosenCategory).length > end
@@ -106,8 +110,8 @@ export default {
       return this.cards.filter((card) => card.category === this.choosenCategory).slice(start, end)
     },
     paginatedCards() {
-      const start = (this.page - 1) * 9
-      const end = this.page * 9
+      const start = (this.page - 1) * 8
+      const end = this.page * 8
 
       this.hasNextPage = this.cards?.length > end
 
@@ -121,6 +125,7 @@ export default {
 .container {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 20px;
 }
 @media (max-width: 1023px) {
   .container {
