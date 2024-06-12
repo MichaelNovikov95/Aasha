@@ -19,7 +19,7 @@
       </div>
       <div class="container text-center lg:text-left" v-else>
         <ProductCardComponent
-          v-for="card in cards"
+          v-for="card in paginatedCards"
           :key="card.id"
           :id="card.id"
           :price="card.price"
@@ -30,6 +30,22 @@
         />
       </div>
     </container>
+    <div class="flex space-x-2 justify-center">
+      <button
+        class="border-2 rounded-lg py-2 px-4 text-button"
+        v-if="page > 1"
+        @click="page = page - 1"
+      >
+        Prev
+      </button>
+      <button
+        class="border-2 rounded-lg py-2 px-4 text-button"
+        v-if="hasNextPage"
+        @click="page = page + 1"
+      >
+        Next
+      </button>
+    </div>
   </section>
 </template>
 
@@ -47,7 +63,9 @@ export default {
   data() {
     return {
       cards: null,
-      choosenCategory: ''
+      choosenCategory: '',
+      page: 1,
+      hasNextPage: true
     }
   },
   mounted() {
@@ -70,7 +88,21 @@ export default {
   },
   computed: {
     filteredCards() {
-      return this.cards.filter((card) => card.category === this.choosenCategory)
+      const start = (this.page - 1) * 9
+      const end = this.page * 9
+
+      this.hasNextPage =
+        this.cards?.filter((card) => card.category === this.choosenCategory).length > end
+
+      return this.cards.filter((card) => card.category === this.choosenCategory).slice(start, end)
+    },
+    paginatedCards() {
+      const start = (this.page - 1) * 9
+      const end = this.page * 9
+
+      this.hasNextPage = this.cards?.length > end
+
+      return this.cards?.slice(start, end)
     }
   }
 }
