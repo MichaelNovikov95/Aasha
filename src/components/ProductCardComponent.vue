@@ -9,6 +9,7 @@
     <div class="flex justify-center">
       <img
         :src="image_src"
+        onerror="src='../assets/svg/default_img.svg'"
         alt="Product image"
         loading="lazy"
         class="image_card w-full h-40 lg:h-72"
