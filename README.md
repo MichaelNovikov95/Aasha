@@ -8,6 +8,7 @@ code more clear to understand and reusable.
 
 Please, download https://github.com/MichaelNovikov95/aasha_server.git and run localy server on your machine
 (in future I'm gonna deploy server on some host, but for now (12.06.2024) I didn't find perfect host for my goals).
+UPD(13.06.2024) - server deployed on render.com. No need to run server locally
 
 # Design
 
