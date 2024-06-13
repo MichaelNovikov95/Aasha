@@ -21,7 +21,7 @@ module.exports = {
       white: '#FFF'
     },
     backgroundImage: {
-      'hero-pattern': "url('../src/assets/svg/backfround.jpg')"
+      'hero-pattern': "url('src/assets/svg/backfround.jpg')"
     },
     fontSize: {
       h3: '47px',
