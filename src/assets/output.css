@@ -641,6 +641,10 @@ html {
   margin-bottom: 0.5rem;
 }
 
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
+
 .ml-2 {
   margin-left: 0.5rem;
 }
@@ -687,10 +691,6 @@ html {
 
 .mt-8 {
   margin-top: 2rem;
-}
-
-.mb-5 {
-  margin-bottom: 1.25rem;
 }
 
 .flex {
@@ -987,7 +987,7 @@ html {
 }
 
 .bg-hero-pattern {
-  background-image: url('../src/assets/svg/backfround.jpg');
+  background-image: url('@/assets/svg/background.jpg');
 }
 
 .bg-origin-content {
@@ -1453,12 +1453,12 @@ html {
     padding-bottom: 5rem;
   }
 
-  .lg\:pb-\[384px\] {
-    padding-bottom: 384px;
-  }
-
   .lg\:pb-44 {
     padding-bottom: 11rem;
+  }
+
+  .lg\:pb-\[384px\] {
+    padding-bottom: 384px;
   }
 
   .lg\:text-left {
