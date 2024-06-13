@@ -86,7 +86,7 @@ export default {
     },
     async fetchOneProduct() {
       try {
-        const data = await fetch(`http://localhost:3002${this.$route.path}`)
+        const data = await fetch(`https://aasha-server.onrender.com${this.$route.path}`)
         const fetchedCard = await data.json()
         this.card = fetchedCard
       } catch (error) {

@@ -18,7 +18,7 @@ export const useAuthStore = defineStore('auth', {
     },
     async signInAction(loginData) {
       try {
-        const response = await fetch('http://localhost:3002/login', {
+        const response = await fetch('https://aasha-server.onrender.com/login', {
           method: 'POST',
           body: JSON.stringify(loginData),
           headers: {

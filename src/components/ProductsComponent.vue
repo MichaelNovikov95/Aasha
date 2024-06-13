@@ -9,21 +9,9 @@
       <aside class="hidden lg:flex mr-8 lg:w-72">
         <ProductsFilterComponent @choosenCategory="(msg) => (choosenCategory = msg)" />
       </aside>
-      <div class="container text-center lg:text-left" v-if="this.choosenCategory !== ''">
+      <div class="container text-center lg:text-left">
         <ProductCardComponent
-          v-for="card in filteredCards"
-          :key="card.id"
-          :id="card.id"
-          :price="card.price"
-          :category="card.category"
-          :name="card.name"
-          :image_src="card.image_src"
-          :fandom="card.fandom"
-        />
-      </div>
-      <div class="container text-center lg:text-left" v-else>
-        <ProductCardComponent
-          v-for="card in paginatedCards"
+          v-for="card in filteredCards()"
           :key="card.id"
           :id="card.id"
           :price="card.price"
@@ -79,17 +67,13 @@ export default {
     }
   },
   mounted() {
-    if (this.choosenCategory === '') {
-      return this.fetchCards()
-    } else {
-      this.filteredCards
-    }
+    this.fetchCards()
   },
   methods: {
     async fetchCards() {
       try {
         this.isLoading = true
-        const data = await fetch('http://localhost:3002/shop')
+        const data = await fetch('https://aasha-server.onrender.com/shop')
         const fetchedCards = await data.json()
         this.cards = fetchedCards
       } catch (error) {
@@ -97,25 +81,24 @@ export default {
       } finally {
         this.isLoading = false
       }
-    }
-  },
-  computed: {
+    },
     filteredCards() {
       const start = (this.page - 1) * 8
       const end = this.page * 8
+      const filteredCards = this.cards?.filter((card) =>
+        card.category.includes(this.choosenCategory)
+      )
 
-      this.hasNextPage =
-        this.cards?.filter((card) => card.category === this.choosenCategory).length > end
+      this.hasNextPage = filteredCards?.length > end
 
-      return this.cards.filter((card) => card.category === this.choosenCategory).slice(start, end)
-    },
-    paginatedCards() {
-      const start = (this.page - 1) * 8
-      const end = this.page * 8
-
-      this.hasNextPage = this.cards?.length > end
-
-      return this.cards?.slice(start, end)
+      return filteredCards?.slice(start, end)
+    }
+  },
+  watch: {
+    choosenCategory(newChoosenCategory, oldChoosenCategory) {
+      if (newChoosenCategory !== oldChoosenCategory) {
+        this.page = 1
+      }
     }
   }
 }

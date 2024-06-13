@@ -62,7 +62,7 @@ export default {
     },
     async registrationAction(personal_data) {
       try {
-        const response = await fetch('http://localhost:3002/registration', {
+        const response = await fetch('https://aasha-server.onrender.com/registration', {
           method: 'POST',
           body: JSON.stringify(personal_data),
           headers: {
