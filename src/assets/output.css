@@ -1196,6 +1196,10 @@ html {
 }
 
 @media (min-width: 1024px) {
+  .lg\:m-20 {
+    margin: 5rem;
+  }
+
   .lg\:mx-0 {
     margin-left: 0px;
     margin-right: 0px;
@@ -1282,6 +1286,10 @@ html {
     height: 56px;
   }
 
+  .lg\:h-\[957px\] {
+    height: 957px;
+  }
+
   .lg\:w-20 {
     width: 5rem;
   }
@@ -1352,6 +1360,10 @@ html {
 
   .lg\:max-w-xl {
     max-width: 36rem;
+  }
+
+  .lg\:max-w-\[800px\] {
+    max-width: 800px;
   }
 
   .lg\:flex-1 {
@@ -1447,6 +1459,11 @@ html {
   .lg\:py-4 {
     padding-top: 1rem;
     padding-bottom: 1rem;
+  }
+
+  .lg\:py-20 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
 
   .lg\:pb-20 {

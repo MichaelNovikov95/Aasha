@@ -2,7 +2,7 @@
   <ServerError v-if="error !== ''" />
   <section v-if="error === ''" class="px-6 lg:px-16 pt-6 pb-14 mt-6 lg:mt-20">
     <ModalComponent @choosenCategory="(msg) => (choosenCategory = msg)" />
-    <div>
+    <div :class="{ active: isLoading }">
       <LoaderComponent v-if="isLoading" />
     </div>
     <div class="flex" v-if="!isLoading">
@@ -79,7 +79,9 @@ export default {
       } catch (error) {
         this.error = error.message
       } finally {
-        this.isLoading = false
+        setTimeout(() => {
+          this.isLoading = false
+        }, 1500)
       }
     },
     filteredCards() {
@@ -129,5 +131,10 @@ export default {
 .filter_container {
   display: flex;
   flex-direction: row-reverse;
+}
+
+.active {
+  height: 957px;
+  text-align: center;
 }
 </style>

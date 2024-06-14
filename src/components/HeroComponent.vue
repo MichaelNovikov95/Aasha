@@ -1,7 +1,9 @@
 <template>
   <section class="bg-hero-pattern bg-origin-content">
     <div class="w-full px-6 lg:px-16 py-20">
-      <div class="lg:flex p-10 lg:p-20 rounded-2xl bg-white lg:justify-center">
+      <div
+        class="lg:flex p-10 lg:p-20 rounded-2xl bg-white lg:justify-center lg:max-w-[800px] lg:mx-auto"
+      >
         <div class="lg:max-w-2xl text-center space-y-5">
           <h4 class="text-h4">Exclusive Artist Creations: Dive into Unique Merchandise!</h4>
           <p class="text-body1 font-normal">
