@@ -36,8 +36,10 @@
           class="bg-resoultion-blue w-full rounded-lg flex items-center justify-center relative lg:w-[448px]"
         >
           <p class="text-button text-white py-3">Add to cart</p>
-          <img src="../assets/svg/arrow.svg" alt="arrow" class="absolute right-4" />
         </button>
+        <div :class="{ active: !productAdd }">
+          <p class="success_msg">Product added to cart!</p>
+        </div>
       </div>
     </div>
   </section>
@@ -54,7 +56,8 @@ export default {
       card: null,
       cart: JSON.parse(localStorage.getItem('cart')) || [],
       checkedSize: 'large',
-      price: 0
+      price: 0,
+      productAdd: false
     }
   },
   mounted() {
@@ -76,6 +79,7 @@ export default {
     },
     addToCart() {
       this.choosenPrice()
+      this.productAdded()
       const pushedCardIntoCart = {
         image_src: this.card.image_src,
         name: this.card.name,
@@ -92,9 +96,26 @@ export default {
       } catch (error) {
         console.log(error.message)
       }
+    },
+    productAdded() {
+      this.productAdd = true
+      setTimeout(() => {
+        this.productAdd = false
+      }, 1000)
     }
   }
 }
 </script>
 
-<style></style>
+<style>
+.active {
+  display: none;
+}
+.success_msg {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 3px 3px 3px 3px;
+  color: #270;
+  background-color: #dff2bf;
+}
+</style>
