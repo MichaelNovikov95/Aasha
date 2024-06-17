@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative w-[156px] lg:min-w-[250px] lg:max-w-[304px] h-[316px] lg:h-[392px] border shadow-[0px_4px_4px_rgba(25,33,61,0.25)] mb-10 lg:mb-14 p-2 rounded-lg border-[slategray]"
+    class="relative w-[156px] lg:min-w-[285px] lg:max-w-[304px] h-[316px] lg:h-[392px] border shadow-[0px_4px_4px_rgba(25,33,61,0.25)] mb-10 lg:mb-14 p-2 rounded-lg border-[slategray]"
     @click="getElementId"
   >
     <div class="price_card bg-glaucous rounded w-16 lg:text-center">
@@ -15,7 +15,7 @@
         class="image_card w-full h-40 lg:h-72"
       />
     </div>
-    <div class="mt-4 lg:ml-6">
+    <div class="mt-4 pb-4 lg:ml-6">
       <p class="text-subtitle1">{{ name }}</p>
       <p class="mt-2 text-body1">{{ fandom }}</p>
     </div>

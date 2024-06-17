@@ -628,6 +628,10 @@ html {
   z-index: 10;
 }
 
+.z-20 {
+  z-index: 20;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -915,6 +919,16 @@ html {
   border-radius: 0.5rem;
 }
 
+.rounded-t-lg {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.rounded-b-lg {
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
 .border {
   border-width: 1px;
 }
@@ -931,6 +945,11 @@ html {
 .border-y-0 {
   border-top-width: 0px;
   border-bottom-width: 0px;
+}
+
+.border-y-2 {
+  border-top-width: 2px;
+  border-bottom-width: 2px;
 }
 
 .border-b-2 {
@@ -1195,6 +1214,14 @@ html {
   transition-duration: 150ms;
 }
 
+.delay-150 {
+  transition-delay: 150ms;
+}
+
+.ease-in-out {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 @media (min-width: 1024px) {
   .lg\:m-20 {
     margin: 5rem;
@@ -1336,6 +1363,10 @@ html {
 
   .lg\:min-w-\[418px\] {
     min-width: 418px;
+  }
+
+  .lg\:min-w-\[285px\] {
+    min-width: 285px;
   }
 
   .lg\:max-w-2xl {
