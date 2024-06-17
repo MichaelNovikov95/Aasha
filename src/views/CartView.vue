@@ -4,6 +4,8 @@
       v-if="checkoutStep === 1"
       :cart="cart"
       @productToRemove="(msg) => removeProduct(msg)"
+      @increaseCountByName="(msg) => increaseCount(msg)"
+      @decreaseCountByName="(msg) => decreaseCount(msg)"
       :productParsedForCart="productParsedForCart"
       :totalPriceCount="totalPriceCount"
       :nextCheckoutStep="nextCheckoutStep"
@@ -36,12 +38,13 @@ import SuccessfulPaymentComponent from '../components/Carts/Checkouts/Successful
 
 const emit = defineEmits({
   productToRemove: String,
-  clientInfo: Object
+  clientInfo: Object,
+  increaseCountByName: String,
+  decreaseCountByName: String
 })
 
 const cart = ref(JSON.parse(localStorage.getItem('cart')) || [])
 const checkoutStep = ref(1)
-const clietnInfo = {}
 
 function removeProduct(name) {
   const renewedCart = JSON.parse(localStorage.getItem('cart')).filter(
@@ -49,6 +52,36 @@ function removeProduct(name) {
   )
   cart.value = renewedCart
   localStorage.setItem('cart', JSON.stringify(renewedCart))
+}
+
+function increaseCount(name) {
+  const itemIndex = JSON.parse(localStorage.getItem('cart')).findIndex(
+    (product) => product.name === name
+  )
+  if (itemIndex === -1) return
+
+  const itemToAdd = JSON.parse(localStorage.getItem('cart')).find(
+    (product) => product.name === name
+  )
+  if (itemToAdd === undefined || null) return
+
+  const cartSlice = JSON.parse(localStorage.getItem('cart')).slice()
+  cartSlice.splice(itemIndex, 0, itemToAdd)
+
+  cart.value = cartSlice
+  localStorage.setItem('cart', JSON.stringify(cartSlice))
+}
+
+function decreaseCount(name) {
+  const itemIndex = JSON.parse(localStorage.getItem('cart')).findIndex(
+    (product) => product.name === name
+  )
+  if (itemIndex === -1) return
+  const cartSlice = JSON.parse(localStorage.getItem('cart')).slice()
+
+  cartSlice.splice(itemIndex, 1)
+  cart.value = cartSlice
+  localStorage.setItem('cart', JSON.stringify(cartSlice))
 }
 
 function nextCheckoutStep() {

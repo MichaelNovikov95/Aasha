@@ -11,6 +11,8 @@
           :name="product.name"
           :totalPrice="product.totalPrice"
           @productToRemove="(msg) => (productToRemove = msg)"
+          @increaseCountByName="(msg) => (increaseCountByName = msg)"
+          @decreaseCountByName="(msg) => (decreaseCountByName = msg)"
         />
       </div>
     </div>
@@ -36,7 +38,7 @@
 <script>
 import ProductCartComponent from './ProductCartComponent.vue'
 export default {
-  emits: ['productToRemove'],
+  emits: ['productToRemove', 'decreaseCountByName', 'increaseCountByName'],
   components: {
     ProductCartComponent
   },
@@ -48,12 +50,20 @@ export default {
   },
   data() {
     return {
-      productToRemove: ''
+      productToRemove: '',
+      decreaseCountByName: '',
+      increaseCountByName: ''
     }
   },
   watch: {
     productToRemove(newProductToRemove) {
       this.$emit('productToRemove', newProductToRemove)
+    },
+    decreaseCountByName(newDecreaseCountByName) {
+      this.$emit('decreaseCountByName', newDecreaseCountByName)
+    },
+    increaseCountByName(newIncreaseCountByName) {
+      this.$emit('increaseCountByName', newIncreaseCountByName)
     }
   }
 }

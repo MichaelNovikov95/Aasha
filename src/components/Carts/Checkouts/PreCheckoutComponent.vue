@@ -6,6 +6,8 @@
     <ContainedCartComponent
       :cart="this.cart ?? []"
       @productToRemove="(msg) => (productToRemove = msg)"
+      @increaseCountByName="(msg) => (increaseCountByName = msg)"
+      @decreaseCountByName="(msg) => (decreaseCountByName = msg)"
       :productParsedForCart="productParsedForCart"
       :totalPriceCount="totalPriceCount"
       :nextCheckoutStep="nextCheckoutStep"
@@ -17,7 +19,7 @@
 import EmptyCartComponent from '../EmptyCartComponent.vue'
 import ContainedCartComponent from '../ContainedCartComponent.vue'
 export default {
-  emits: ['productToRemove'],
+  emits: ['productToRemove', 'decreaseCountByName', 'increaseCountByName'],
   props: {
     cart: Object,
     productParsedForCart: Object,
@@ -26,7 +28,9 @@ export default {
   },
   data() {
     return {
-      productToRemove: ''
+      productToRemove: '',
+      decreaseCountByName: '',
+      increaseCountByName: ''
     }
   },
   components: {
@@ -36,6 +40,12 @@ export default {
   watch: {
     productToRemove(newProductToRemove) {
       this.$emit('productToRemove', newProductToRemove)
+    },
+    decreaseCountByName(newDecreaseCountByName) {
+      this.$emit('decreaseCountByName', newDecreaseCountByName)
+    },
+    increaseCountByName(newIncreaseCountByName) {
+      this.$emit('increaseCountByName', newIncreaseCountByName)
     }
   }
 }
