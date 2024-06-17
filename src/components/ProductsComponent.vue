@@ -2,7 +2,7 @@
   <ServerError v-if="error !== ''" />
   <section v-if="error === ''" class="px-6 lg:px-16 pt-6 pb-14 mt-6 lg:mt-20">
     <ModalComponent @choosenCategory="(msg) => (choosenCategory = msg)" />
-    <div :class="{ active: isLoading }">
+    <div :class="{ loading: isLoading }">
       <LoaderComponent v-if="isLoading" />
     </div>
     <div class="flex" v-if="!isLoading">
@@ -133,7 +133,7 @@ export default {
   flex-direction: row-reverse;
 }
 
-.active {
+.loading {
   height: 957px;
   text-align: center;
 }

@@ -5,5 +5,8 @@
       <p class="text-body1">Your cart is currently empty!</p>
       <p class="text-body1">Sounds like a good time to start shopping.</p>
     </div>
+    <div>
+      <RouterLink to="/shop" class="underline underline-offset-4">Go shopping !</RouterLink>
+    </div>
   </div>
 </template>

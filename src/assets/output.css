@@ -1425,6 +1425,10 @@ html {
     max-width: 800px;
   }
 
+  .lg\:max-w-\[448px\] {
+    max-width: 448px;
+  }
+
   .lg\:flex-1 {
     flex: 1 1 0%;
   }

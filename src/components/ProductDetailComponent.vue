@@ -21,8 +21,13 @@
           </ul>
         </div>
       </div>
-      <div class="space-y-6 mt-10">
+      <div class="lg:max-w-[448px] space-y-6 mt-10">
         <h4 class="text-h4">{{ this.card?.name }}</h4>
+        <ul class="text-body1">
+          <li v-for="description in this.card?.description" :key="description">
+            - {{ description }}
+          </li>
+        </ul>
         <h5 class="text-h5" v-if="this.card?.category !== 'prints'">${{ this.card?.price }}.00</h5>
         <h5 v-else class="text-h5">
           ${{ this.checkedSize === 'large' ? this.card?.price[0] : this.card?.price[1] }}.00
