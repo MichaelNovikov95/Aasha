@@ -15,7 +15,9 @@
     </div>
     <div class="space-y-2.5 lg:space-y-0 lg:flex lg:items-center lg:space-x-8">
       <div class="flex space-x-4">
-        <button @click="decreaseCount(this.name)" v-if="this.count > 1">-</button>
+        <button @click="decreaseCount(this.name)" :class="{ activeButton: this.count <= 1 }">
+          -
+        </button>
         <p class="border-2 rounded-lg py-1 lg:py-4 lg:px-9 w-16 lg:w-[80px] lg:h-[56px]">
           {{ count }}
         </p>
@@ -40,7 +42,8 @@ export default {
     return {
       productToRemove: '',
       increaseCountByName: '',
-      decreaseCountByName: ''
+      decreaseCountByName: '',
+      isActive: false
     }
   },
   methods: {
@@ -61,6 +64,13 @@ export default {
       setTimeout(() => {
         this.$emit('decreaseCountByName', '')
       }, 0)
+    },
+    toggleButton() {
+      if (this.count > 1) {
+        return (this.isActive = true)
+      } else {
+        return (this.isActive = false)
+      }
     }
   }
 }
@@ -82,5 +92,8 @@ export default {
     width: 152px;
     height: 152px;
   }
+}
+.activeButton {
+  visibility: hidden;
 }
 </style>
