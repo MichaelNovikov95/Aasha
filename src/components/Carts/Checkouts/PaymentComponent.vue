@@ -76,35 +76,37 @@
               <div class="lg:w-[304px] flex flex-col items-start space-y-2">
                 <label for="card_number">Card number</label>
                 <input
-                  class="w-full border-2 rounded-lg h-12"
+                  class="w-full border-2 rounded-lg h-12 pl-2"
                   type="text"
                   id="card_number"
                   name="card_info"
+                  maxlength="16"
                 />
               </div>
-              <div class="lg:w-[136px] flex flex-col items-start space-y-2">
+              <div class="lg:w-[160px] flex flex-col items-start space-y-2">
                 <label for="expiration">Expiration</label>
                 <input
-                  class="w-full border-2 rounded-lg h-12"
-                  type="data"
+                  class="w-full border-2 rounded-lg h-12 pl-2"
+                  type="month"
                   id="expiration"
                   name="card_info"
                 />
               </div>
-              <div class="lg:w-[136px] flex flex-col items-start space-y-2">
+              <div class="lg:w-[112px] flex flex-col items-start space-y-2">
                 <label for="cvc">CVC</label>
                 <input
-                  class="w-full border-2 rounded-lg h-12"
+                  class="w-full border-2 rounded-lg h-12 pl-2"
                   type="password"
                   id="cvc"
                   name="card_info"
+                  maxlength="3"
                 />
               </div>
             </div>
             <div class="flex flex-col items-start space-y-2">
               <label for="name_on_card">Name on card</label>
               <input
-                class="w-full border-2 rounded-lg h-12"
+                class="w-full border-2 rounded-lg h-12 pl-2"
                 type="text"
                 id="name_on_card"
                 name="card_info"

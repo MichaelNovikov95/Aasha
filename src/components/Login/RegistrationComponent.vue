@@ -4,7 +4,7 @@
     <div class="w-full flex flex-col text-subtitle1 items-start space-y-2">
       <label for="first_name">First name</label>
       <input
-        class="border-2 border-slate-gray rounded-lg w-full h-12"
+        class="border-2 pl-2 border-slate-gray rounded-lg w-full h-12"
         type="text"
         id="first_name"
         name="registration"
@@ -13,7 +13,7 @@
     <div class="w-full flex flex-col text-subtitle1 items-start space-y-2">
       <label for="last_name">Last name</label>
       <input
-        class="border-2 border-slate-gray rounded-lg w-full h-12"
+        class="border-2 pl-2 border-slate-gray rounded-lg w-full h-12"
         type="text"
         id="last_name"
         name="registration"
@@ -22,7 +22,7 @@
     <div class="w-full flex flex-col text-subtitle1 items-start space-y-2">
       <label for="email">Email</label>
       <input
-        class="border-2 border-slate-gray rounded-lg w-full h-12"
+        class="border-2 pl-2 border-slate-gray rounded-lg w-full h-12"
         type="email"
         id="email"
         name="registration"
@@ -31,7 +31,7 @@
     <div class="w-full flex flex-col mt-4 text-subtitle1 items-start space-y-2">
       <label for="password">Password</label>
       <input
-        class="border-2 border-slate-gray rounded-lg w-full h-12"
+        class="border-2 pl-2 border-slate-gray rounded-lg w-full h-12"
         type="password"
         id="password"
         name="registration"
