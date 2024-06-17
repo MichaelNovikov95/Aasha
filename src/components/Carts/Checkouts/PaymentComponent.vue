@@ -80,6 +80,7 @@
                   type="text"
                   id="card_number"
                   name="card_info"
+                  minlength="16"
                   maxlength="16"
                 />
               </div>
@@ -112,13 +113,12 @@
                 name="card_info"
               />
             </div>
-            <button
-              @click="this.nextCheckoutStep"
-              type="submit"
-              class="text-center bg-resoultion-blue rounded-3xl confirm_button"
-            >
+            <button type="submit" class="text-center bg-resoultion-blue rounded-3xl confirm_button">
               <p class="text-button text-white py-3">Pay</p>
             </button>
+            <div v-if="this.warning !== ''">
+              <p class="text-body1 warning_msg">{{ this.warning }}</p>
+            </div>
           </form>
         </div>
       </div>
@@ -184,17 +184,69 @@ export default {
         expiration: '',
         cvc: '',
         name_on_card: ''
-      }
+      },
+      warning: '',
+      showWarning: false
     }
   },
   methods: {
     getCardValues(submitEvent) {
       const { elements } = submitEvent.target
-      this.cardInfo.cardNumber = elements.card_number.value
+
+      this.cardInfo.cardNumber = elements.card_number.value.trim()
+
+      if (!this.expirationValidation(elements.expiration.value)) return
       this.cardInfo.expiration = elements.expiration.value
-      this.cardInfo.cvc = elements.cvc.value
+
+      this.cardInfo.cvc = elements.cvc.value.trim()
+
+      if (!this.cardholderValidation(elements.name_on_card.value)) return
       this.cardInfo.name_on_card = elements.name_on_card.value
+
+      this.nextCheckoutStep()
+      localStorage.removeItem('cart')
+    },
+    expirationValidation(exp) {
+      const date = new Date()
+      const month = date.getMonth() + 1
+      const year = date.getFullYear()
+      if (parseInt(exp.split('-')[0]) < year || parseInt(exp.split('-')[1]) < month) {
+        this.warning = 'Your credit card is expired. Please, use another card'
+        setTimeout(() => {
+          this.warning = ''
+        }, 1000)
+        return false
+      } else {
+        return true
+      }
+    },
+
+    cardholderValidation(cardholder) {
+      const cardFirstName = cardholder.split(' ')[0].toLowerCase().trim()
+      const cardLastName = cardholder.split(' ')[1].toLowerCase().trim()
+      const clientFirstName = this.clientInfo.first_name.toLowerCase().trim()
+      const clientLastName = this.clientInfo.last_name.toLowerCase().trim()
+
+      if (cardFirstName !== clientFirstName || cardLastName !== clientLastName) {
+        this.warning = "First or last name doesn't match. Please, check"
+        setTimeout(() => {
+          this.warning = ''
+        }, 1000)
+        return false
+      } else {
+        return true
+      }
     }
   }
 }
 </script>
+
+<style>
+.warning_msg {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 3px 3px 3px 3px;
+  color: #9f6000;
+  background-color: #feefb3;
+}
+</style>

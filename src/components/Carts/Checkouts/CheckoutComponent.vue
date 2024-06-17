@@ -94,7 +94,10 @@
           </div>
         </div>
         <div type="submit" class="text-center bg-resoultion-blue rounded-3xl confirm_button">
-          <button @click="this.moveForward" class="text-white text-button py-3">Next</button>
+          <button class="text-white text-button py-3">Next</button>
+        </div>
+        <div v-if="this.error !== ''">
+          <p class="error_msg text-body1">{{ this.error }} should not be empty. Please, check it</p>
         </div>
       </form>
     </div>
@@ -120,28 +123,58 @@ export default {
         city: '',
         state: '',
         postal_code: ''
-      }
+      },
+      error: ''
     }
   },
   methods: {
     moveForward() {
       setTimeout(() => {
         this.$emit('clientInfo', this.clientInfo)
-        this.nextCheckoutStep()
+        if (this.error === '') this.nextCheckoutStep()
       }, 0)
     },
     getFormValues(submitEvent) {
       const { elements } = submitEvent.target
 
+      if (!this.emailValidation(elements.email.value)) return (this.error = 'email')
       this.clientInfo.email = elements.email.value
+
+      if (!this.stringsValidation(elements.country.value)) return (this.error = 'country')
       this.clientInfo.country = elements.country.value
+
+      if (!this.stringsValidation(elements.first_name.value)) return (this.error = 'First name')
       this.clientInfo.first_name = elements.first_name.value
+
+      if (!this.stringsValidation(elements.last_name.value)) return (this.error = 'Last name')
       this.clientInfo.last_name = elements.last_name.value
+
+      if (!this.stringsValidation(elements.address.value)) return (this.error = 'Address')
       this.clientInfo.address = elements.address.value
+
       this.clientInfo.appartment = elements.appartment.value
+
+      if (!this.stringsValidation(elements.city.value)) return (this.error = 'City')
       this.clientInfo.city = elements.city.value
+
+      if (!this.stringsValidation(elements.state.value)) return (this.error = 'State')
       this.clientInfo.state = elements.state.value
+
+      if (!this.stringsValidation(elements.postal_code.value)) return (this.error = 'Postal Code')
       this.clientInfo.postal_code = elements.postal_code.value
+
+      this.moveForward()
+    },
+    emailValidation(email) {
+      return String(email)
+        .toLowerCase()
+        .trim()
+        .match(
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        )
+    },
+    stringsValidation(string) {
+      return String(string).toLowerCase().trim()
     }
   }
 }
@@ -154,5 +187,13 @@ export default {
 
 .email-form {
   margin-bottom: 24px !important;
+}
+
+.error_msg {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 3px 3px 3px 3px;
+  color: #d8000c;
+  background-color: #ffbaba;
 }
 </style>
