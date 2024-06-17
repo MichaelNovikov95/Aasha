@@ -1,11 +1,11 @@
 <template>
   <section class="py-10 lg:py-16 px-6 lg:px-44">
     <div class="flex items-center text-body1 space-x-4">
-      <span @click="goHome">Home</span>
+      <span @click="goHome" class="cursor-pointer">Home</span>
       <img src="../assets/svg/line.svg" alt="line" />
-      <span @click="goBack">Catalogue</span>
+      <span @click="goBack" class="cursor-pointer">Catalogue</span>
       <img src="../assets/svg/line.svg" alt="line" />
-      <span>{{ this.card?.name }}</span>
+      <span class="cursor-not-allowed">{{ this.card?.name }}</span>
     </div>
     <div class="lg:flex lg:justify-between">
       <div>
