@@ -82,7 +82,10 @@ const router = createRouter({
       name: 'pageNotFound',
       component: PageNotFound
     }
-  ]
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    return { top: 0 }
+  }
 })
 
 router.beforeEach(async (to) => {
