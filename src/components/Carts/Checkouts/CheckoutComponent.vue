@@ -139,6 +139,7 @@ export default {
           }
         })
         const { url } = await response.json()
+        console.log(url)
         window.location = url
       } catch (error) {
         console.log(error.message)

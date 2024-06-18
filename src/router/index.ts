@@ -81,12 +81,12 @@ const router = createRouter({
     },
     {
       path: '/success',
-      name: 'success payment',
+      name: 'success_payment',
       component: SuccessComponent
     },
     {
       path: '/cancel',
-      name: 'cancel payment',
+      name: 'cancel_payment',
       component: CancelComponent
     },
     {
