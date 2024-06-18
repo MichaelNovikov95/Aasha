@@ -100,6 +100,7 @@
           <p class="error_msg text-body1">{{ this.error }} should not be empty. Please, check it</p>
         </div>
       </form>
+      <button @click="sendPay">Send req</button>
     </div>
   </section>
 </template>
@@ -128,6 +129,22 @@ export default {
     }
   },
   methods: {
+    async sendPay() {
+      try {
+        const response = await fetch('https://aasha-server.onrender.com/shop/cart/charge', {
+          method: 'POST',
+          body: JSON.stringify(this.productParsedForCart),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        const { url } = await response.json()
+        window.location = url
+      } catch (error) {
+        console.log(error.message)
+      }
+    },
+
     moveForward() {
       setTimeout(() => {
         this.$emit('clientInfo', this.clientInfo)

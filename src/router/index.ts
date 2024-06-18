@@ -8,6 +8,8 @@ import ProductView from '@/views/ProductView.vue'
 import CartView from '@/views/CartView.vue'
 import LoginView from '@/views/LoginView.vue'
 import PageNotFound from '@/views/PageNotFound.vue'
+import SuccessComponent from '@/components/Payment/SuccessComponent.vue'
+import CancelComponent from '@/components/Payment/CancelComponent.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -76,6 +78,16 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: LoginView
+    },
+    {
+      path: '/success',
+      name: 'success payment',
+      component: SuccessComponent
+    },
+    {
+      path: '/cancel',
+      name: 'cancel payment',
+      component: CancelComponent
     },
     {
       path: '/:pathMatch(.*)*',
