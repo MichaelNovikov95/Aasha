@@ -5,7 +5,7 @@
       <img src="../assets/svg/line.svg" alt="line" />
       <span @click="goBack" class="cursor-pointer">Catalogue</span>
       <img src="../assets/svg/line.svg" alt="line" />
-      <span class="cursor-not-allowed">{{ this.card?.name }}</span>
+      <span class="cursor-not-allowed">{{ this.card?.name.slice(0, 8) }}...</span>
     </div>
     <div class="lg:flex lg:justify-between">
       <div>
