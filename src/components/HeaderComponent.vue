@@ -4,6 +4,7 @@
       <RouterLink to="/" class="cursor-pointer"
         ><img src="../assets/svg/Aasha.svg" alt="Logo"
       /></RouterLink>
+      <RouterLink to="/success">success</RouterLink>
       <div class="flex flex-wrap space-x-2 content-end">
         <button class="text-button" v-if="store.token" @click="store.logoutAction">Logout</button>
         <RouterLink to="/login" class="cursor-pointer" v-else

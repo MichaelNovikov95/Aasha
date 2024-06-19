@@ -80,12 +80,12 @@ const router = createRouter({
       component: LoginView
     },
     {
-      path: '/shop/cart/charge/success',
+      path: '/success',
       name: 'success',
       component: SuccessfulPaymentComponent
     },
     {
-      path: '/shop/cart/charge/cancel',
+      path: '/cancel',
       name: 'cancel',
       component: CancelComponent
     },
