@@ -18,6 +18,7 @@
           :category="card.category"
           :name="card.name"
           :image_src="card.image_src"
+          :small_image_src="card.small_image_src"
           :fandom="card.fandom"
         />
       </div>

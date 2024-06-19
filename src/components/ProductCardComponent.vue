@@ -7,9 +7,9 @@
       <p class="text-subtitle2 text-cosmic-latte px-2.5 py-1">${{ price[0] ?? price }}.00</p>
     </div>
     <div class="flex justify-center">
-      <img
+      <v-lazy-image
         :src="image_src"
-        onerror="src='../assets/svg/default_img.svg'"
+        :src-placeholder="small_image_src"
         alt="Product image"
         loading="lazy"
         class="image_card w-full h-40 lg:h-72"
@@ -23,8 +23,10 @@
 </template>
 
 <script>
+import VLazyImage from 'v-lazy-image'
 export default {
-  props: ['name', 'price', 'id', 'image_src', 'category', 'fandom'],
+  components: { VLazyImage },
+  props: ['name', 'price', 'id', 'image_src', 'category', 'fandom', 'small_image_src'],
   methods: {
     getElementId() {
       this.$router.push(`/shop/${this.category}/${this.id}`)
@@ -47,8 +49,16 @@ export default {
   position: absolute;
   right: 9px;
   top: 15px;
+  z-index: 10;
 }
 .image_card {
   padding-top: 25px;
+}
+.v-lazy-image {
+  filter: blur(10px);
+  transition: filter 0.7s;
+}
+.v-lazy-image-loaded {
+  filter: blur(0);
 }
 </style>
