@@ -8,7 +8,7 @@ import ProductView from '@/views/ProductView.vue'
 import CartView from '@/views/CartView.vue'
 import LoginView from '@/views/LoginView.vue'
 import PageNotFound from '@/views/PageNotFound.vue'
-import SuccessComponent from '@/components/Payment/SuccessComponent.vue'
+import SuccessfulPaymentComponent from '@/components/Carts/Checkouts/SuccessfulPaymentComponent.vue'
 import CancelComponent from '@/components/Payment/CancelComponent.vue'
 
 const router = createRouter({
@@ -81,12 +81,12 @@ const router = createRouter({
     },
     {
       path: '/success',
-      name: 'success_payment',
-      component: SuccessComponent
+      name: 'success',
+      component: SuccessfulPaymentComponent
     },
     {
       path: '/cancel',
-      name: 'cancel_payment',
+      name: 'cancel',
       component: CancelComponent
     },
     {

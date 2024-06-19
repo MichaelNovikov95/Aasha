@@ -1,6 +1,6 @@
 <template>
   <section class="px-6 pt-20 pb-14 lg:pb-20 text-center lg:max-w-[480px] lg:ml-auto lg:mr-auto">
-    <div v-if="token !== ''">
+    <div v-if="token !== '' || token !== undefined">
       <h3 class="text-h3 pb-20">You are logged in!</h3>
       <div>
         <RouterLink to="/" class="underline underline-offset-4">Return to home page</RouterLink>
