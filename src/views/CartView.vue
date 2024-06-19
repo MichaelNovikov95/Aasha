@@ -17,13 +17,6 @@
       @clientInfo="(msg) => (clientInfo = msg)"
       :nextCheckoutStep="nextCheckoutStep"
     />
-    <PaymentComponent
-      v-else-if="checkoutStep === 3"
-      :productParsedForCart="productParsedForCart"
-      :totalPriceCount="totalPriceCount"
-      :clientInfo="clientInfo"
-      :nextCheckoutStep="nextCheckoutStep"
-    />
   </section>
 </template>
 
@@ -32,7 +25,6 @@ import { ref, watchEffect, computed } from 'vue'
 
 import PreCheckoutComponent from '../components/Carts/Checkouts/PreCheckoutComponent.vue'
 import CheckoutComponent from '../components/Carts/Checkouts/CheckoutComponent.vue'
-import PaymentComponent from '../components/Carts/Checkouts/PaymentComponent.vue'
 
 const emit = defineEmits({
   productToRemove: String,

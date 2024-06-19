@@ -5,7 +5,8 @@
       <img src="../assets/svg/line.svg" alt="line" />
       <span @click="goBack" class="cursor-pointer">Catalogue</span>
       <img src="../assets/svg/line.svg" alt="line" />
-      <span class="cursor-not-allowed">{{ this.card?.name.slice(0, 8) }}...</span>
+      <span class="short_name">{{ this.card?.name.slice(0, 8) }}...</span>
+      <span class="full_name">{{ this.card?.name }}</span>
     </div>
     <div class="lg:flex lg:justify-between">
       <div>
@@ -122,5 +123,21 @@ export default {
   border-radius: 3px 3px 3px 3px;
   color: #270;
   background-color: #dff2bf;
+}
+.short_name {
+  display: none;
+}
+.full_name {
+  display: none;
+}
+@media (max-width: 1023px) {
+  .short_name {
+    display: block;
+  }
+}
+@media (min-width: 1024px) {
+  .full_name {
+    display: block;
+  }
 }
 </style>
