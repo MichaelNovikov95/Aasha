@@ -24,7 +24,6 @@
       :clientInfo="clientInfo"
       :nextCheckoutStep="nextCheckoutStep"
     />
-    <SuccessfulPaymentComponent v-else />
   </section>
 </template>
 
@@ -34,7 +33,6 @@ import { ref, watchEffect, computed } from 'vue'
 import PreCheckoutComponent from '../components/Carts/Checkouts/PreCheckoutComponent.vue'
 import CheckoutComponent from '../components/Carts/Checkouts/CheckoutComponent.vue'
 import PaymentComponent from '../components/Carts/Checkouts/PaymentComponent.vue'
-import SuccessfulPaymentComponent from '../components/Carts/Checkouts/SuccessfulPaymentComponent.vue'
 
 const emit = defineEmits({
   productToRemove: String,
