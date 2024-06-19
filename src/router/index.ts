@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
 import { useAuthStore } from '@/stores/authStore'
 
 import HomeView from '@/views/HomeView.vue'
@@ -12,7 +12,7 @@ import SuccessfulPaymentComponent from '@/components/Carts/Checkouts/SuccessfulP
 import CancelComponent from '@/components/Payment/CancelComponent.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
