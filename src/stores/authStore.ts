@@ -2,7 +2,14 @@ import { defineStore } from 'pinia'
 import router from '@/router'
 
 export const useAuthStore = defineStore('auth', {
-  state: () => ({ token: localStorage.getItem('token') ?? '', error: '', returnUrl: null }),
+  state: () => ({
+    token: localStorage.getItem('token') ?? '',
+    error: '',
+    returnUrl: null,
+    email: '',
+    first_name: '',
+    last_name: ''
+  }),
   actions: {
     signIn(submitEvent) {
       const { elements } = submitEvent.target
@@ -28,6 +35,9 @@ export const useAuthStore = defineStore('auth', {
         const json = await response.json()
 
         this.token = json.token
+        this.email = json.email
+        this.first_name = json.first_name
+        this.last_name = json.last_name
 
         localStorage.setItem('token', json.token)
 

@@ -10,11 +10,10 @@
     </div>
     <div class="lg:flex lg:justify-between">
       <div>
-        <v-lazy-image
+        <img
           :src="this.card?.image_src"
-          :src-placeholder="this.card?.small_image_src"
-          :alt="this.card?.name"
           loading="lazy"
+          :alt="this.card?.name"
           class="lg:h-[528px] w-[528px]"
         />
         <div v-if="this.card?.more_images" class="flex justify-center lg:justify-normal space-x-5">
@@ -53,12 +52,10 @@
 </template>
 
 <script>
-import VLazyImage from 'v-lazy-image'
 import PrintSizeCheckbox from './PrintSizeCheckbox.vue'
 export default {
   components: {
-    PrintSizeCheckbox,
-    VLazyImage
+    PrintSizeCheckbox
   },
   data() {
     return {
@@ -142,5 +139,12 @@ export default {
   .full_name {
     display: block;
   }
+}
+.v-lazy-image {
+  filter: blur(10px);
+  transition: filter 0.7s;
+}
+.v-lazy-image-loaded {
+  filter: blur(0);
 }
 </style>
