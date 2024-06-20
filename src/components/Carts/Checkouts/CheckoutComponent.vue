@@ -96,9 +96,12 @@
             />
           </div>
         </div>
-        <div type="submit" class="text-center bg-resoultion-blue rounded-3xl confirm_button">
-          <button class="text-white text-button py-3">Next</button>
-        </div>
+        <button
+          type="submit"
+          class="w-full text-center bg-resoultion-blue rounded-3xl confirm_button"
+        >
+          <p class="text-white text-button py-3">Next</p>
+        </button>
         <div v-if="error !== null">
           <p class="error_msg text-body1">
             {{ error.value }} field should not be empty. Please, check it
