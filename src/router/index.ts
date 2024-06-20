@@ -100,15 +100,15 @@ const router = createRouter({
   }
 })
 
-router.beforeEach(async (to) => {
-  const publicPages = ['/shop/cart']
-  const authRequired = publicPages.includes(to.path)
-  const auth = useAuthStore()
+// router.beforeEach(async (to) => {
+//   const publicPages = ['/shop/cart']
+//   const authRequired = publicPages.includes(to.path)
+//   const auth = useAuthStore()
 
-  if (authRequired && !auth.token) {
-    auth.returnUrl = to.fullPath
-    return '/login'
-  }
-})
+//   if (authRequired && !auth.token) {
+//     auth.returnUrl = to.fullPath
+//     return '/login'
+//   }
+// })
 
 export default router

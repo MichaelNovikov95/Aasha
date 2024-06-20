@@ -26,6 +26,8 @@
 
       <button
         @click="this.nextCheckoutStep"
+        :disabled="isAuth"
+        :class="{ disabled: isAuth }"
         class="text-button text-white w-full bg-resoultion-blue py-3 rounded-lg"
       >
         Checkout
@@ -33,9 +35,13 @@
       <RouterLink to="/shop" class="text-body1">Continue shopping</RouterLink>
     </div>
   </div>
+  <div v-if="isAuth" class="info_msg">
+    <p class="text-body1">Only authorized customer could buy our product. Please, sign in</p>
+  </div>
 </template>
 
 <script>
+import { useAuthStore } from '@/stores/authStore'
 import ProductCartComponent from './ProductCartComponent.vue'
 export default {
   emits: ['productToRemove', 'decreaseCountByName', 'increaseCountByName'],
@@ -48,11 +54,23 @@ export default {
     totalPriceCount: Number,
     nextCheckoutStep: Function
   },
+  setup() {
+    const store = useAuthStore()
+    const token = store.token
+    return {
+      token
+    }
+  },
+  mounted() {
+    if (this.token) return (this.isAuth = false)
+    return (this.Auth = true)
+  },
   data() {
     return {
       productToRemove: '',
       decreaseCountByName: '',
-      increaseCountByName: ''
+      increaseCountByName: '',
+      isAuth: true
     }
   },
   watch: {
@@ -68,3 +86,16 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.disabled {
+  cursor: not-allowed;
+}
+.info_msg {
+  margin-top: 40px;
+  padding: 10px;
+  border-radius: 3px 3px 3px 3px;
+  color: #059;
+  background-color: #bef;
+}
+</style>
