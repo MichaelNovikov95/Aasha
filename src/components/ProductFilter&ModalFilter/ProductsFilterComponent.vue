@@ -12,11 +12,19 @@
       <Transition>
         <div v-if="showOptions" class="border-2 rounded-b-lg">
           <div class="text-resoultion-blue w-full py-3 pl-4 border-b-2">
-            <input type="radio" id="prints" name="print" value="prints" v-model="choosenCategory" />
+            <input
+              @click="showOptions = !showOptions"
+              type="radio"
+              id="prints"
+              name="print"
+              value="prints"
+              v-model="choosenCategory"
+            />
             <label for="prints" class="text-body1 ml-2">Prints</label>
           </div>
           <div class="text-resoultion-blue w-full py-3 pl-4 border-b-2">
             <input
+              @click="showOptions = !showOptions"
               type="radio"
               id="stickers"
               name="print"
@@ -26,15 +34,36 @@
             <label for="stickers" class="text-body1 ml-2">Stickers</label>
           </div>
           <div class="text-resoultion-blue w-full py-3 pl-4 border-b-2">
-            <input type="radio" id="pins" name="print" value="pins" v-model="choosenCategory" />
+            <input
+              @click="showOptions = !showOptions"
+              type="radio"
+              id="pins"
+              name="print"
+              value="pins"
+              v-model="choosenCategory"
+            />
             <label for="pins" class="text-body1 ml-2">Pins/charms</label>
           </div>
           <div class="text-resoultion-blue w-full py-3 pl-4 border-b-2">
-            <input type="radio" id="books" name="print" value="books" v-model="choosenCategory" />
+            <input
+              @click="showOptions = !showOptions"
+              type="radio"
+              id="books"
+              name="print"
+              value="books"
+              v-model="choosenCategory"
+            />
             <label for="books" class="text-body1 ml-2">Books</label>
           </div>
           <div class="text-resoultion-blue w-full py-3 pl-4">
-            <input type="radio" id="reset" name="print" value="" v-model="choosenCategory" />
+            <input
+              @click="showOptions = !showOptions"
+              type="radio"
+              id="reset"
+              name="print"
+              value=""
+              v-model="choosenCategory"
+            />
             <label for="reset" class="text-body1 ml-2">Reset</label>
           </div>
         </div>
