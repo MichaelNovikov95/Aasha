@@ -8,7 +8,9 @@ code more clear to understand and reusable.
 
 Please, download https://github.com/MichaelNovikov95/aasha_server.git and run localy server on your machine
 (in future I'm gonna deploy server on some host, but for now (12.06.2024) I didn't find perfect host for my goals).
+
 UPD(13.06.2024) - server deployed on render.com. No need to run server locally
+
 UPD(20.06.2024) - add stripe payment. Try:
 -For success payment - 4242 4242 4242 4242 (any valid future date exp and cvc)
 -For cancel payment - 4000 0000 0000 0002 (same rules for exp and cvc)
